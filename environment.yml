@@ -1,0 +1,23 @@
+name: nova-pay-env
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pandas
+  - numpy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyter
+  - pip
+
+  - pip:
+      - xgboost
+      - lightgbm
+      - catboost
+      - imbalanced-learn
+      - streamlit
+      - joblib
