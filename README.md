@@ -35,28 +35,28 @@ Python libraries used include:
 ## Project Structure
 
 nova-pay-fraud-prototype
-│
-├── data
-│ ├── raw
-│ └── processed
-│
-├── notebooks
-│
-├── src
-│ ├── data
-│ ├── features
-│ ├── models
-│ └── utils
-│
-├── app
-│
-├── configs
-│
-├── models
-│
-├── requirements.txt
-├── environment.yml
-└── README.md
+- │
+- ├── data
+- │ ├── raw
+- │ └── processed
+- │
+- ├── notebooks
+- │
+- ├── src
+- │ ├── data
+- │ ├── features
+- │ ├── models
+- │ └── utils
+- │
+- ├── app
+- │
+- ├── configs
+- │
+- ├── models
+- │
+- ├── requirements.txt
+- ├── environment.yml
+- └── README.md
 
 
 
