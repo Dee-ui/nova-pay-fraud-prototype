@@ -1,0 +1,13 @@
+
+EDA SUMMARY
+-----------
+
+Total transactions: 9940
+
+Fraud count: 193
+Fraud rate: 0.0194
+
+Key observations:
+- Review numeric distribution plots
+- Review categorical fraud rate plots
+- Review time based fraud plots
