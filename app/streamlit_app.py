@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
 import os
+import sys
+
+# Add project root to Python path
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(PROJECT_ROOT)
 
 from src.ingestion import run_ingestion
 from src.cleaning import run_cleaning
@@ -15,7 +20,7 @@ from config.config import (
     BEST_MODEL_FILE
 )
 
-st.title("Fraud Detection System")
+st.title("NovaPay Fraud Detection System")
 
 st.write("Upload a transaction dataset to detect fraud.")
 
@@ -23,12 +28,19 @@ uploaded_file = st.file_uploader("Upload CSV File", type=["csv"])
 
 if uploaded_file is not None:
 
-    temp_path = os.path.join("data/raw", uploaded_file.name)
+    raw_dir = os.path.join(PROJECT_ROOT, "data", "raw")
+    os.makedirs(raw_dir, exist_ok=True)
+
+    temp_path = os.path.join(raw_dir, uploaded_file.name)
 
     with open(temp_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
 
     st.success("File uploaded successfully")
+
+    # -----------------------------
+    # Ingestion
+    # -----------------------------
 
     st.write("Running ingestion...")
 
@@ -49,6 +61,10 @@ if uploaded_file is not None:
 
     st.success("Ingestion completed")
 
+    # -----------------------------
+    # Cleaning
+    # -----------------------------
+
     st.write("Running cleaning...")
 
     cleaned_file = run_cleaning(
@@ -58,6 +74,10 @@ if uploaded_file is not None:
 
     st.success("Cleaning completed")
 
+    # -----------------------------
+    # Feature Engineering
+    # -----------------------------
+
     st.write("Running feature engineering...")
 
     feature_file = run_feature_engineering(
@@ -66,6 +86,10 @@ if uploaded_file is not None:
     )
 
     st.success("Feature engineering completed")
+
+    # -----------------------------
+    # Prediction
+    # -----------------------------
 
     st.write("Running fraud prediction...")
 
