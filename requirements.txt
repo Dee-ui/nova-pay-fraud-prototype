@@ -10,3 +10,7 @@ streamlit
 matplotlib
 seaborn
 jupyter
+optuna
+pyod
+shap
+mlflow

@@ -7,10 +7,10 @@ import sys
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(PROJECT_ROOT)
 
-from src.ingestion import run_ingestion
-from src.cleaning import run_cleaning
-from src.feature_engineering import run_feature_engineering
-from src.prediction import predict_transactions
+from src.pipelines.ingestion import run_ingestion
+from src.pipelines.cleaning import run_cleaning
+from src.pipelines.feature_engineering import run_feature_engineering
+from src.pipelines.prediction import predict_transactions
 
 from config.config import (
     DATA_DICTIONARY_FILE,

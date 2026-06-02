@@ -3,40 +3,55 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.Python
+*.egg-info/
 
 # Virtual environments
-env/
+nova-pay-env/
 venv/
+env/
 .venv/
-
-# Conda
-*.conda
-*.env
-
-# Jupyter
-.ipynb_checkpoints
-
-# Data files
-data/raw/*
-data/processed/*
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-
-# Models
-models/*
-
-# Logs
-logs/
-
-# Mac
-.DS_Store
-
-# Windows
-Thumbs.db
 
 # IDE
 .vscode/
 .idea/
 
-# Environment variables
-.env
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# MLflow local state
+mlruns/
+mlartifacts/
+mlflow.db
+
+# CatBoost training artifacts (auto-created)
+catboost_info/
+
+# DVC will manage these — git only tracks the .dvc pointer files
+data/raw/*.csv
+data/raw/*.pdf
+data/prepared/*.csv
+data/processed/**/*.csv
+data/processed/**/*.png
+data/processed/**/*.json
+models/*.pkl
+models/*.png
+models/*.json
+models/*.csv
+# reports/explainability/
+reports/model_metrics.csv
+
+# One-off file for chat
+project_structure.txt
+
+# Keep folder structure even when contents are ignored
+!data/raw/.gitkeep
+!data/prepared/.gitkeep
+!data/processed/.gitkeep
+!models/.gitkeep
+!reports/.gitkeep
+# !reports/explainability/.gitkeep
