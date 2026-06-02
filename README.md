@@ -1,6 +1,7 @@
 # Nova Pay Fraud Detection Prototype
 
-This repository contains a prototype machine learning system designed to detect fraudulent financial transactions for Nova Pay.
+This repository contains an end-to-end MLOps pipeline for detecting fraudulent transactions on the
+NovaPay platform.
 
 The project demonstrates a full data science workflow including data exploration, feature engineering, model development, evaluation, and deployment through a lightweight application.
 
@@ -15,6 +16,26 @@ The project focuses on:
 - Comparing multiple machine learning models
 - Building an explainable fraud scoring system
 - Creating a simple prototype interface for predictions
+
+## Pipeline overview
+
+The pipeline is run as a sequence of stages, each executed via `run.py`:
+
+| Stage | Command | Purpose |
+|-------|---------|---------|
+| Ingestion | `python run.py --step ingestion` | Schema validation, timestamp parsing, deduplication |
+| Cleaning | `python run.py --step cleaning` | ML-based imputation, typo correction, missingness indicators |
+| EDA | `python run.py --step eda` | Statistical summaries, fraud-rate analyses, dashboard JSON |
+| Feature engineering | `python run.py --step feature_engineering` | Time features, customer aggregates, cohort z-scores, one-hot encoding |
+| Modelling | `python run.py --step modelling` | Train + tune linear/tree/neural finalists with Optuna, CV-based selection |
+| Explainability | `python run.py --step explainability` | Feature importance, SHAP, partial dependence |
+| Prediction | `python run.py --step prediction` | Batch prediction with the winning model |
+
+Or run the full pipeline:
+
+```bash
+python run.py --step all
+```
 
 ## Tech Stack
 
@@ -59,8 +80,17 @@ nova-pay-fraud-prototype
 - └── README.md
 
 
+## Setup
 
-## Setup Instructions
+```bash
+python -m venv nova-pay-env
+nova-pay-env\Scripts\activate            # Windows
+source nova-pay-env/bin/activate         # macOS / Linux
+
+pip install -r requirements.txt
+```
+
+### Instructions
 
 Clone the repository:
 - `git clone https://github.com/Dee-ui/nova-pay-fraud-prototype.git`
@@ -80,6 +110,27 @@ Install dependencies:
 
 Launch the Streamlit application:
 - `streamlit run app/app.py`
+
+## Experiment tracking
+
+Every modelling run is logged to a local MLflow tracking store. View the
+UI with:
+
+```bash
+mlflow ui
+```
+
+Then open `http://127.0.0.1:5000`.
+
+## Data versioning
+
+Data and model files are versioned with DVC. See `docs/dvc.md` for setup.
+
+## Current model status
+
+Best CV PR-AUC ~0.085 (baseline 0.015 → ~5x lift). Limited by data size:
+145 fraud positives in training set. See `reports/explainability/` for
+feature importance analysis.
 
 
 ## Reproducibility
