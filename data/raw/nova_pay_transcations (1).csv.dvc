@@ -1,0 +1,5 @@
+outs:
+- md5: 8c22be6d597fd3f9648a5526697ce147
+  size: 2624075
+  hash: md5
+  path: nova_pay_transcations (1).csv

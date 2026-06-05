@@ -1,0 +1,5 @@
+outs:
+- md5: 32822bc03c02529a909aedce46f4cdab
+  size: 2663278
+  hash: md5
+  path: anomaly_detectors.pkl

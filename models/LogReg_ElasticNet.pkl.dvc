@@ -1,0 +1,5 @@
+outs:
+- md5: c3bd83c1315767e37f3644121f643579
+  size: 1279
+  hash: md5
+  path: LogReg_ElasticNet.pkl

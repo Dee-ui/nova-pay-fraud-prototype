@@ -1,0 +1,5 @@
+outs:
+- md5: d3255318b3c5fb666ad7d49f70fcde17
+  size: 138933
+  hash: md5
+  path: MLP_tanh_2L.pkl
